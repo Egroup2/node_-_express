@@ -131,4 +131,18 @@ app.listen(8000, (err) => {
     console.log("Listening to port 8000");
 });
 
+// ******************** Using Express ************************
 
+const express = require('express')
+const app= express()
+app.use('/', express.static("static/apple"))
+app.use('/project', express.static("static/PROJECT"))
+app.get('*', (req,res)=> {
+    res.sendFile(__dirname + "/static/apple/about.html")
+})
+app.listen(4000, (err) => {
+    if(err){
+        console.log('error found')
+    }
+    console.log("LIstening to port 4000")
+})
